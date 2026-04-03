@@ -152,8 +152,7 @@
 
 
         window.onafterprint = function() {
-
-            window.location.href = "{{ route('pesanan.index') }}";
+            window.close();
         };
     </script>
 
