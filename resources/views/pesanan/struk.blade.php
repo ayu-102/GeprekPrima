@@ -15,9 +15,10 @@
         }
 
         .struk {
-            width: 58mm;
-            margin: 0 auto;
-            padding: 10px 2px;
+            width: 300px;
+            margin: 20px auto;
+            padding: 15px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             font-family: 'Courier New', Courier, monospace;
             box-sizing: border-box;
         }
