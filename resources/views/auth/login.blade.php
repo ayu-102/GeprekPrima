@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Login - Geprek Prima</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,700;1,800&display=swap" rel="stylesheet">
 
@@ -179,7 +180,14 @@
 
             <div class="mb-3">
                 <label class="form-label">Password</label>
-                <input type="password" name="password" class="form-control" placeholder="Masukkan password" required>
+                <div class="input-group">
+                    <input type="password" name="password" id="password" class="form-control"
+                        placeholder="Masukkan password" required style="border-right: none;">
+                    <span class="input-group-text bg-light" id="togglePassword"
+                        style="border: 2px solid #f4f4f4; border-left: none; border-radius: 0 20px 20px 0; cursor: pointer;">
+                        <i class="bi bi-eye-slash" id="eyeIcon"></i>
+                    </span>
+                </div>
             </div>
 
             <button type="submit" class="btn-login" style="margin-top: 30px">LOGIN</button>
@@ -191,6 +199,22 @@
 
         <div class="accent-bottom"></div>
     </div>
+
+    <script>
+        const togglePassword = document.querySelector('#togglePassword');
+        const password = document.querySelector('#password');
+        const eyeIcon = document.querySelector('#eyeIcon');
+
+        togglePassword.addEventListener('click', function() {
+            // Toggle tipe input
+            const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+            password.setAttribute('type', type);
+
+            // Toggle icon mata
+            eyeIcon.classList.toggle('bi-eye');
+            eyeIcon.classList.toggle('bi-eye-slash');
+        });
+    </script>
 
 </body>
 

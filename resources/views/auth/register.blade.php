@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Register - Geprek Prima</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,700;1,800&display=swap" rel="stylesheet">
 
@@ -187,14 +188,28 @@
 
             <div class="mb-2">
                 <label class="form-label">Password</label>
-                <input type="password" name="password" class="form-control" placeholder="Password" required>
+                <div class="input-group">
+                    <input type="password" name="password" id="password" class="form-control"
+                        placeholder="Masukkan password" required style="border-right: none;">
+                    <span class="input-group-text bg-light" id="btnPass"
+                        style="border: 2px solid #f4f4f4; border-left: none; border-radius: 0 20px 20px 0; cursor: pointer;">
+                        <i class="bi bi-eye-slash" id="iconPass"></i>
+                    </span>
+                </div>
             </div>
 
             <div class="mb-3">
                 <label class="form-label">Confirm Password</label>
-                <input type="password" name="password_confirmation" class="form-control"
-                    placeholder="Konfirmasi Password" required>
+                <div class="input-group">
+                    <input type="password" name="password_confirmation" id="password_confirmation" class="form-control"
+                        placeholder="Konfirmasi password" required style="border-right: none;">
+                    <span class="input-group-text bg-light" id="btnConfirm"
+                        style="border: 2px solid #f4f4f4; border-left: none; border-radius: 0 20px 20px 0; cursor: pointer;">
+                        <i class="bi bi-eye-slash" id="iconConfirm"></i>
+                    </span>
+                </div>
             </div>
+
 
             <button type="submit" class="btn-signup">DAFTAR SEKARANG</button>
         </form>
@@ -205,6 +220,26 @@
 
         <div class="accent-bottom"></div>
     </div>
+
+    <script>
+        function createToggle(btnId, inputId, iconId) {
+            const btn = document.querySelector(btnId);
+            const input = document.querySelector(inputId);
+            const icon = document.querySelector(iconId);
+
+            btn.addEventListener('click', function() {
+                const type = input.getAttribute('type') === 'password' ? 'text' : 'password';
+                input.setAttribute('type', type);
+                icon.classList.toggle('bi-eye');
+                icon.classList.toggle('bi-eye-slash');
+            });
+        }
+
+
+        createToggle('#btnPass', '#password', '#iconPass');
+
+        createToggle('#btnConfirm', '#password_confirmation', '#iconConfirm');
+    </script>
 
 </body>
 
