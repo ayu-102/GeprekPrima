@@ -10,17 +10,30 @@
             width: 100%;
             margin: 0;
             padding: 0;
-            background: #fff;
+            background: #f4f4f4;
+            /* Background abu biar struk putihnya kelihatan */
             color: #000;
+            font-family: 'Courier New', Courier, monospace;
         }
 
         .struk {
-            width: 300px;
+            /* TAMPILAN DI LAYAR: Kita buat besar biar enak dibaca */
+            width: 450px;
             margin: 20px auto;
-            padding: 15px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            font-family: 'Courier New', Courier, monospace;
+            padding: 30px;
+            background: #fff;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
             box-sizing: border-box;
+        }
+
+        /* Ukuran teks di layar kita buat lebih besar sedikit */
+        .struk b {
+            font-size: 18px;
+        }
+
+        .struk span,
+        table {
+            font-size: 14px;
         }
 
         .text-center {
@@ -36,40 +49,62 @@
         }
 
         .line {
-            border-top: 1px dashed #000;
-            margin: 8px 0;
+            border-top: 2px dashed #000;
+            /* Garis lebih tebal di layar */
+            margin: 12px 0;
         }
 
         table {
             width: 100%;
-            font-size: 11px;
             border-collapse: collapse;
         }
 
         .item-row td {
-            padding: 2px 0;
+            padding: 4px 0;
         }
 
         .no-print {
-            margin-top: 15px;
+            margin-top: 20px;
             text-align: center;
         }
 
+        /* --- SETTING KHUSUS PAS DI-PRINT (PENTING!) --- */
         @media print {
-            .no-print {
-                display: none !important;
+            @page {
+                size: 58mm auto;
+                margin: 0;
+            }
+
+            body {
+                background: #fff;
             }
 
             .struk {
-                width: 58mm;
-                margin: 0 auto;
-                padding-left: 4mm;
-                padding-right: 4mm;
+                /* Kita kembalikan ke ukuran asli printer thermal */
+                width: 58mm !important;
+                margin: 0 !important;
+                padding: 2mm !important;
+                box-shadow: none !important;
+                /* Kita paksa ukuran font jadi kecil lagi biar nggak berantakan */
+                font-size: 10px !important;
             }
 
-            @page {
-                margin: 0;
-                size: 58mm auto;
+            .struk b {
+                font-size: 12px !important;
+            }
+
+            .struk span,
+            table {
+                font-size: 10px !important;
+            }
+
+            .line {
+                border-top: 1px dashed #000;
+                margin: 5px 0;
+            }
+
+            .no-print {
+                display: none !important;
             }
         }
     </style>
