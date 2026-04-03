@@ -153,7 +153,7 @@
 
         window.onafterprint = function() {
 
-            window.location.href = "{{ route('pesanan.struk') }}";
+            window.location.href = "{{ route('pesanan.index') }}";
         };
     </script>
 
