@@ -164,23 +164,58 @@
         </div>
 
         <div class="no-print">
-            <button onclick="window.print()"
-                style="font-size: 11px; padding: 8px; background: #000; color: #fff; border: none; width: 100%;">
-                PRINT SEKARANG
-            </button>
+            <button onclick="printStruk()">PRINT SEKARANG</button>
         </div>
     </div>
 
     <script>
-        window.onload = function() {
-            setTimeout(() => {
-                window.print();
-            }, 300);
-        };
+        function printStruk() {
+            const content = document.querySelector('.struk').innerHTML;
 
-        window.onafterprint = function() {
-            window.close();
-        };
+            const frame = document.createElement('iframe');
+            frame.style.position = 'absolute';
+            frame.style.top = '-10000px';
+
+            document.body.appendChild(frame);
+
+            const doc = frame.contentWindow.document;
+
+            doc.open();
+            doc.write(`
+        <html>
+        <head>
+            <title>Print</title>
+            <style>
+                body {
+                    width: 58mm;
+                    margin: 0;
+                    font-family: monospace;
+                }
+                .line {
+                    border-top: 1px dashed #000;
+                    margin: 5px 0;
+                }
+                table {
+                    width: 100%;
+                    font-size: 10px;
+                }
+                .text-right { text-align: right; }
+                .text-center { text-align: center; }
+                .bold { font-weight: bold; }
+            </style>
+        </head>
+        <body>
+            ${content}
+        </body>
+        </html>
+    `);
+            doc.close();
+
+            setTimeout(() => {
+                frame.contentWindow.print();
+                document.body.removeChild(frame);
+            }, 500);
+        }
     </script>
 
 </body>
