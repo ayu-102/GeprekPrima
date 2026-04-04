@@ -24,7 +24,7 @@ class AuthController extends Controller
         return view('auth.login');
     }
 
-    /* Proses login user */
+
     public function login(Request $request)
     {
         $credentials = $request->validate([
@@ -79,6 +79,6 @@ class AuthController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect('/login');
+        return redirect('login');
     }
 }

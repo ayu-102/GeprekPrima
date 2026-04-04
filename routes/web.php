@@ -12,7 +12,9 @@ use Illuminate\Support\Facades\Artisan;
 | 1. HALAMAN UTAMA & AUTH
 */
 
-Route::get('/', [AuthController::class, 'showLogin'])->name('login');
+Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
+Route::get('/', [AuthController::class, 'showLogin']);
+
 Route::post('/login', [AuthController::class, 'login'])->name('login.post');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
