@@ -230,7 +230,7 @@
                             <label class="fw-bold mb-1 small text-dark">Id Transaksi</label>
                             <input type="text" name="id_transaksi" id="id_transaksi"
                                 class="form-control form-control-sm shadow-none border-0 bg-white"
-                                placeholder="Contoh: 0987654" style="border-radius: 8px;">
+                                placeholder="Contoh: 0987654(opsional)" style="border-radius: 8px;">
                             <small style="font-size: 0.65rem;" class="text-muted">*Lihat di struk transfer bank/e-wallet
                                 kamu</small>
                         </div>
