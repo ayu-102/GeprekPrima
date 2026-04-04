@@ -115,7 +115,7 @@
     <div class="struk">
         <div class="text-center">
             <b style="font-size: 14px;">GeprekPrima</b><br>
-            <span style="font-size: 10px;">Kasir</span>
+            <span style="font-size: 10px;">Struk</span>
 
             <div class="line"></div>
 
