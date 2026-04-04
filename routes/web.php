@@ -57,7 +57,7 @@ Route::middleware(['auth'])->group(function () {
 
 
 
-Route::get('/link-ajaib', function () {
+Route::get('/link', function () {
     Artisan::call('storage:link');
     return "Jembatan Storage Berhasil Dibuat!";
 });

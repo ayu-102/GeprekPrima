@@ -11,13 +11,11 @@
             margin: 0;
             padding: 0;
             background: #f4f4f4;
-            /* Background abu biar struk putihnya kelihatan */
             color: #000;
             font-family: 'Courier New', Courier, monospace;
         }
 
         .struk {
-            /* TAMPILAN DI LAYAR: Kita buat besar biar enak dibaca */
             width: 450px;
             margin: 20px auto;
             padding: 30px;
@@ -26,7 +24,7 @@
             box-sizing: border-box;
         }
 
-        /* Ukuran teks di layar kita buat lebih besar sedikit */
+
         .struk b {
             font-size: 18px;
         }
@@ -50,7 +48,6 @@
 
         .line {
             border-top: 2px dashed #000;
-            /* Garis lebih tebal di layar */
             margin: 12px 0;
         }
 
@@ -68,7 +65,7 @@
             text-align: center;
         }
 
-        /* --- SETTING KHUSUS PAS DI-PRINT (PENTING!) --- */
+
         @media print {
             @page {
                 size: 58mm auto;
@@ -80,12 +77,10 @@
             }
 
             .struk {
-                /* Kita kembalikan ke ukuran asli printer thermal */
                 width: 58mm !important;
                 margin: 0 !important;
                 padding: 2mm !important;
                 box-shadow: none !important;
-                /* Kita paksa ukuran font jadi kecil lagi biar nggak berantakan */
                 font-size: 10px !important;
             }
 

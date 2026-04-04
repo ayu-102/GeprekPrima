@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\User; // Untuk interaksi dengan tabel users
-use Illuminate\Support\Facades\Hash; // Untuk keamanan password
-use Illuminate\Support\Facades\Auth; // Untuk proses login/logout
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {

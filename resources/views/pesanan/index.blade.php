@@ -37,10 +37,10 @@
 
             if (kembalian < 0) kembalian = 0;
 
-            // Update tampilan teks kembalian
+
             document.getElementById('text_kembalian' + orderId).innerText = 'Rp ' + kembalian.toLocaleString('id-ID');
 
-            // Update hidden input kembalian
+
             document.getElementById('input_kembalian' + orderId).value = kembalian;
         }
     </script>

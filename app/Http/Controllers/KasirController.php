@@ -185,7 +185,7 @@ class KasirController extends Controller
         $totalPemasukan = $query->sum('total_harga');
         $totalTransaksi = $query->count();
 
-        // --- LOGIKA METODE PEMBAYARAN UNTUK DIAGRAM ---
+
         $pembayaran = Order::where('status', 'selesai')
             ->when($request->filled('tanggal'), function ($q) use ($request) {
                 return $q->whereDate('created_at', $request->tanggal);
@@ -196,12 +196,12 @@ class KasirController extends Controller
             ->groupBy('metode_bayar')
             ->get();
 
-        // Kirim Label (QRIS, Cash, dll) dan Datanya
+
         $labelsMetode = $pembayaran->pluck('metode_bayar')->map(fn($item) => strtoupper($item))->toArray();
         $dataMetode = $pembayaran->pluck('total')->toArray();
-        // ----------------------------------------------
 
-        // Logika Menu Terlaris (Tetap)
+
+        // Logika Menu Terlaris
         $menuTerlaris = \App\Models\OrderItem::select('menu_id', \Illuminate\Support\Facades\DB::raw('SUM(jumlah) as total_terjual'))
             ->whereIn('order_id', (clone $query)->pluck('id'))
             ->groupBy('menu_id')
@@ -209,7 +209,7 @@ class KasirController extends Controller
             ->with('menu')
             ->first();
 
-        // Laporan Harian untuk Grafik Garis (Tetap)
+        // Laporan Harian Grafik
         $laporanHarian = \App\Models\Order::where('status', 'selesai')
             ->selectRaw('DATE(created_at) as tanggal, COUNT(id) as jml_transaksi, SUM(total_harga) as total')
             ->groupBy('tanggal')
@@ -219,8 +219,8 @@ class KasirController extends Controller
         return view('keuangan.index', compact(
             'totalPemasukan',
             'totalTransaksi',
-            'labelsMetode', // Variabel baru
-            'dataMetode',   // Variabel baru
+            'labelsMetode',
+            'dataMetode',
             'menuTerlaris',
             'laporanHarian'
         ));
@@ -270,7 +270,7 @@ class KasirController extends Controller
             ->whereIn('status', ['pending', 'proses', 'Proses'])
             ->orderBy('created_at', 'desc')->get();
 
-        // Kembalikan hanya view partial-nya saja
+
         return view('pesanan._list', compact('orders'));
     }
 }
