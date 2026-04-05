@@ -16,7 +16,7 @@ class OrderItem extends Model
         'subtotal'
     ];
 
-    // Relasi balik ke Menu
+    // balik ke Menu
     public function menu()
     {
         return $this->belongsTo(Menu::class, 'menu_id');
