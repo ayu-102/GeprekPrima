@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('nama_pembeli');
             $table->integer('total_harga');
             $table->string('metode_bayar');
-            $table->enum('status', ['pending', 'proses', 'lunas', 'dibatalkan'])->default('pending');
+            $table->enum('status', ['pending', 'Antre', 'selesai', 'batal'])->default('pending');
             $table->integer('uang_bayar')->default(0);
             $table->integer('kembalian')->default(0);
             $table->text('catatan')->nullable();

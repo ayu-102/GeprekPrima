@@ -61,7 +61,7 @@ class KasirController extends Controller
         }
 
 
-        $order->status = 'dibatalkan';
+        $order->status = 'batal';
         $order->save();
 
         return redirect()->back()->with('success', 'Pesanan dibatalkan dan stok telah dikembalikan otomatis!');
