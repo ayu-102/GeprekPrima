@@ -38,7 +38,9 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/kasir/selesai/{id}', [KasirController::class, 'selesaikanPesanan'])->name('kasir.selesai');
     Route::get('/kasir/pesanan/{id}', [KasirController::class, 'showDetail'])->name('kasir.pesanan.detail');
     Route::get('/fetch-pesanan', [KasirController::class, 'fetchPesanan'])->name('pesanan.fetch');
+    Route::post('/kasir/batal/{id}', [KasirController::class, 'batalkanPesanan'])->name('orders.cancel');
 });
+
 
 /*
 | 3. ROUTE UNTUK USER (PELANGGAN) - Memesan Menu

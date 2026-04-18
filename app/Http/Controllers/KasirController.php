@@ -40,6 +40,33 @@ class KasirController extends Controller
         return view('pesanan.index', compact('orders'));
     }
 
+    public function batalkanPesanan($id)
+    {
+        $order = \App\Models\Order::with('orderItems')->findOrFail($id);
+
+
+        if ($order->status == 'dibatalkan') {
+            return redirect()->back()->with('error', 'Pesanan ini sudah dibatalkan sebelumnya.');
+        }
+
+
+        foreach ($order->orderItems as $item) {
+
+            $menu = \App\Models\Menu::find($item->menu_id);
+            if ($menu) {
+
+                $menu->stok = $menu->stok + $item->jumlah;
+                $menu->save();
+            }
+        }
+
+
+        $order->status = 'dibatalkan';
+        $order->save();
+
+        return redirect()->back()->with('success', 'Pesanan dibatalkan dan stok telah dikembalikan otomatis!');
+    }
+
 
     public function riwayat(Request $request)
     {

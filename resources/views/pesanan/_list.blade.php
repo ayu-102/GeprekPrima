@@ -78,8 +78,21 @@
                             style="height: 40px; border-radius: 10px;">
                             <i class="bi bi-printer me-1"></i> Cetak
                         </a>
+
+                        @if ($order->status !== 'lunas' && $order->status !== 'dibatalkan')
+                            <form action="{{ route('orders.cancel', $order->id) }}" method="POST" class="flex-grow-1"
+                                onsubmit="return confirm('Apakah Anda yakin ingin membatalkan pesanan ini?')">
+                                @csrf
+                                <button type="submit"
+                                    class="btn btn-danger btn-sm w-100 border-0 d-flex align-items-center justify-content-center"
+                                    style="height: 40px; border-radius: 10px;">
+                                    <i class="bi bi-x-circle me-1"></i> Batal
+                                </button>
+                            </form>
+                        @endif
+
                         <button type="button"
-                            class="btn btn-success btn-sm w-100 border-0 d-flex align-items-center justify-content-center"
+                            class="btn btn-success btn-sm flex-grow-1 border-0 d-flex align-items-center justify-content-center"
                             style="background-color: #28a745; height: 40px; border-radius: 10px;" data-bs-toggle="modal"
                             data-bs-target="#modalBayar{{ $order->id }}">
                             <i class="bi bi-check-lg me-1"></i> Selesai
@@ -169,7 +182,8 @@
 
                             <div class="d-flex justify-content-between align-items-center">
                                 <label class="small fw-bold text-muted">Kembalian:</label>
-                                <h4 class="fw-bold text-success mb-0" id="text_kembalian{{ $order->id }}">Rp 0</h4>
+                                <h4 class="fw-bold text-success mb-0" id="text_kembalian{{ $order->id }}">Rp 0
+                                </h4>
                                 <input type="hidden" name="kembalian" id="input_kembalian{{ $order->id }}"
                                     value="0">
                             </div>

@@ -253,7 +253,7 @@
             <div class="modal-content" style="border-radius: 20px;">
                 <div class="modal-body text-center p-4">
                     <h6 class="fw-bold mb-3">Silakan Scan QRIS</h6>
-                    <img src="{{ asset('img/qris.jpeg') }}" class="img-fluid rounded-3 mb-3"
+                    <img src="{{ asset('img/QRIS-Dummy.jpg') }}" class="img-fluid rounded-3 mb-3"
                         style="border: 1px solid #eee;">
                     <div class="bg-light p-2 rounded mb-3">
                         <small class="text-muted">Total:</small>
