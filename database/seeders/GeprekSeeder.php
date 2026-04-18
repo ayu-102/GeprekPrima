@@ -16,14 +16,14 @@ class GeprekSeeder extends Seeder
 
         User::create([
             'name' => 'Owner Geprek',
-            'email' => 'admin@geprek.com',
+            'email' => 'admin@gmail.com',
             'password' => Hash::make('admin123'),
             'role' => 'admin',
         ]);
 
         User::create([
-            'name' => 'User 100',
-            'email' => 'user@geprek.com',
+            'name' => 'Budi Beno',
+            'email' => 'Budi@gmail.com',
             'password' => Hash::make('user123'),
             'role' => 'user',
         ]);
