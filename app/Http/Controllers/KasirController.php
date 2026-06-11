@@ -255,13 +255,7 @@ class KasirController extends Controller
 
     public function pengaturan()
     {
-
         $user = Auth::user();
-
-
-        if (!$user) {
-            return redirect()->route('login');
-        }
 
         return view('pengaturan.index', compact('user'));
     }
@@ -271,22 +265,29 @@ class KasirController extends Controller
         /** @var \App\Models\User $user */
         $user = Auth::user();
 
+        // Validasi input
         $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:users,email,' . ($user ? $user->id : ''),
+            'email' => 'required|email|unique:users,email,' . $user->id,
             'password' => 'nullable|min:8|confirmed',
+        ], [
+            // Custom pesan error bahasa Indonesia (opsional, agar lebih user-friendly)
+            'name.required' => 'Nama wajib diisi.',
+            'email.required' => 'Email wajib diisi.',
+            'email.unique' => 'Email sudah terdaftar digunakan oleh akun lain.',
+            'password.min' => 'Password baru minimal harus 8 karakter.',
+            'password.confirmed' => 'Konfirmasi password baru tidak cocok.',
         ]);
 
-        if ($user) {
-            $user->name = $request->name;
-            $user->email = $request->email;
+        // Proses Update data
+        $user->name = $request->name;
+        $user->email = $request->email;
 
-            if ($request->filled('password')) {
-                $user->password = Hash::make($request->password);
-            }
-
-            $user->save();
+        if ($request->filled('password')) {
+            $user->password = Hash::make($request->password);
         }
+
+        $user->save();
 
         return redirect()->back()->with('success', 'Profil dan Password berhasil diperbarui!');
     }

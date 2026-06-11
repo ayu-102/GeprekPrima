@@ -29,8 +29,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/pesanan', [KasirController::class, 'pesanan'])->name('pesanan.index');
     Route::get('/riwayat', [KasirController::class, 'riwayat'])->name('riwayat.index');
     Route::get('/keuangan', [KasirController::class, 'keuangan'])->name('keuangan.index');
-    Route::get('/pengaturan', [KasirController::class, 'pengaturan'])->name('pengaturan.index');
-    Route::put('/pengaturan/update', [KasirController::class, 'updateProfil'])->name('pengaturan.update');
+    Route::get('/pengaturan', [KasirController::class, 'pengaturan'])->name('pengaturan.index')->middleware('auth');
+    Route::put('/pengaturan/update', [KasirController::class, 'updateProfil'])->name('pengaturan.update')->middleware('auth');
     Route::get('/menu', [KasirController::class, 'menu'])->name('menu.index');
     Route::post('/menu', [KasirController::class, 'store'])->name('menu.store');
     Route::put('/menu/{id}', [KasirController::class, 'update'])->name('menu.update');

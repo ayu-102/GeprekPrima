@@ -120,7 +120,7 @@
 
         .floating-ayam {
             position: absolute;
-            opacity: 0.3;
+            opacity: 0.2;
             width: 100px;
             height: auto;
             pointer-events: none;
@@ -175,14 +175,16 @@
 
 
     <div class="mobile-frame">
+
+
+        <img src="{{ asset('img/ayam-bg.png') }}" class="floating-ayam ayam-2">
+        <img src="{{ asset('img/ayam-bg.png') }}" class="floating-ayam ayam-3">
+        <img src="{{ asset('img/ayam-bg.png') }}" class="floating-ayam ayam-4">
+        <img src="{{ asset('img/ayam-bg.png') }}" class="floating-ayam ayam-5">
+        <img src="{{ asset('img/ayam-bg.png') }}" class="floating-ayam ayam-6">
+
+
         <div class="app-header shadow-sm">
-
-            <img src="{{ asset('img/ayam-bg.png') }}" class="floating-ayam ayam-2">
-            <img src="{{ asset('img/ayam-bg.png') }}" class="floating-ayam ayam-3">
-            <img src="{{ asset('img/ayam-bg.png') }}" class="floating-ayam ayam-4">
-            <img src="{{ asset('img/ayam-bg.png') }}" class="floating-ayam ayam-5">
-            <img src="{{ asset('img/ayam-bg.png') }}" class="floating-ayam ayam-6">
-
 
             <div class="header-text">
                 <h4 style="font-size: 0.8rem; margin-buttom:2px; font-weight: 400;">Selamat Datang di</h4>
@@ -200,6 +202,8 @@
                     class="btn-category {{ request('kategori') == 'makanan' ? 'active' : '' }}">Makanan</a>
                 <a href="{{ route('menu-user.index', ['kategori' => 'minuman']) }}"
                     class="btn-category {{ request('kategori') == 'minuman' ? 'active' : '' }}">Minuman</a>
+                <a href="{{ route('menu-user.index', ['kategori' => 'snack']) }}"
+                    class="btn-category {{ request('kategori') == 'Snack' ? 'active' : '' }}">Snack</a>
             </div>
 
             <h6 class="fw-bold mb-3" style="font-size: 1rem; color: #ffffff;">PILIHAN MENU</h6>

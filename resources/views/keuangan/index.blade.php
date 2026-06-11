@@ -58,7 +58,7 @@
                                 <h2 class="fw-bold mb-0 mt-1">Rp {{ number_format($totalPemasukan, 0, ',', '.') }}</h2>
                             </div>
                             <div class="icon-box bg-light-success">
-                                <i class="bi bi-graph-up-arrow fs-4 text-success"></i>
+                                <i class="bi bi-graph-up-arrow text-success fs-4"></i>
                             </div>
                         </div>
                     </div>
